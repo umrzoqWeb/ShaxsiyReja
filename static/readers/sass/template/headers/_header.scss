@@ -1,0 +1,953 @@
+.will-sticky {
+  .sticky-active {
+    position: fixed;
+    top: -100%;
+    right: 0;
+    left: 0;
+    background-color: $white-color;
+    transition: all ease 0.8s;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.07);
+    &.active {
+      top: 0;
+      background: $title-color;
+      .header-middle {
+        border-bottom: none;
+        &::after {
+          height: 102px;
+        }
+
+        &::before {
+          height: 102px;
+        }
+      }
+      .vs-logo {
+        top: 0;
+        &.vs-logo {
+          &::after {
+            top: 0;
+            transform: none;
+          }
+        }
+      }
+
+      .menu-inner {
+        &::before,
+        &::after {
+          top: 50%;
+          transform: translateY(-50%);
+        }
+      }
+      .header-btns {
+        top: 0;
+        a {
+          &::after {
+            top: unset;
+          }
+        }
+      }
+    }
+  }
+}
+.header-layout1 {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background: transparent;
+  z-index: 41;
+  .menu-inner {
+    position: relative;
+    &::after {
+      content: "";
+      position: absolute;
+      left: 12px;
+      bottom: -30%;
+      background-color: var(--white-color);
+      height: 70px;
+      width: 3px;
+      border-radius: 1.5px;
+    }
+    &::before {
+      content: "";
+      position: absolute;
+      right: 12px;
+      bottom: -30%;
+      background-color: var(--white-color);
+      height: 70px;
+      width: 3px;
+      border-radius: 1.5px;
+    }
+  }
+  .header-middle {
+    border-bottom: 2px solid #ffffff29;
+    border-top: unset;
+    position: relative;
+    @media (min-width: "1200px") {
+      padding: 0 25px;
+    }
+    .dropdown {
+      button {
+        background: transparent;
+        border: unset;
+        color: $white-color;
+        font-size: 14px;
+        font-weight: 700;
+      }
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      width: 1px;
+      height: 180px;
+      background: #ffffff29;
+      left: 0;
+      top: 0;
+    }
+    &::before {
+      content: "";
+      position: absolute;
+      width: 1px;
+      height: 180px;
+      background: #ffffff29;
+      right: 0;
+      top: 0;
+    }
+  }
+  .header-btns {
+    .vs-btn {
+      border-radius: 0;
+      border: 2px solid var(--white-color);
+      background-color: rgba(15, 57, 59, 0.2549019608);
+      &:hover {
+        color: $title-color;
+        background-color: $secondary-color;
+        border-color: $secondary-color;
+      }
+    }
+  }
+  .will-sticky .sticky-active {
+    box-shadow: 0 0 10px 0 rgb(0 0 0 / 40%);
+  }
+  @media (min-width: 1600px) {
+    --main-container: 1800px;
+  }
+}
+.header-layout2 {
+  position: relative;
+  z-index: 9;
+  .header-top {
+    background-color: $title-color;
+    color: $white-color;
+  }
+  .header-links {
+    ul {
+      margin: 0;
+      padding: 0;
+      li {
+        list-style: none;
+        display: inline-block;
+        position: relative;
+        &:first-child {
+          padding-right: 20px;
+          margin-right: 20px;
+          &::after {
+            content: "";
+            position: absolute;
+            width: 2px;
+            height: 15px;
+            right: 0;
+            top: 50%;
+            background: $smoke-color;
+            transform: translateY(-50%);
+          }
+        }
+        a {
+          color: $white-color;
+          font-size: 12px;
+          font-family: $body-font;
+          text-transform: capitalize;
+          position: relative;
+          &:hover {
+            color: $secondary-color;
+          }
+          .clock-icon {
+            line-height: 45px;
+            text-align: center;
+            font-size: 13px;
+          }
+          i {
+            margin-right: 15px;
+          }
+        }
+      }
+    }
+  }
+  .vs-logo {
+    top: 0;
+  }
+  .header-btns {
+    top: 0;
+    margin-left: 0;
+  }
+  .sticky-active {
+    &:not(.active) {
+      position: relative;
+    }
+    &.active {
+      box-shadow: 0 0 10px 0 rgb(0 0 0 / 40%);
+      .menu-area {
+        background-color: $title-color;
+        box-shadow: 0 0 20px 0 rgba(#000, 0.07);
+      }
+      .menu-style2 {
+        text-align: center;
+        > ul {
+          > li {
+            > a {
+              padding: 37.5px 0;
+            }
+          }
+        }
+      }
+      .header-btns {
+        .vs-btn {
+          border: 1px solid $white-color;
+        }
+      }
+    }
+  }
+
+  .menu-area {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+  }
+  .sticky-wrapper {
+    margin-top: 15px;
+    position: absolute;
+    width: 100%;
+    background: transparent;
+  }
+  @media (min-width: 1600px) {
+    --main-container: 1516px;
+  }
+}
+.header-layout3 {
+  position: relative;
+  z-index: 9;
+  @media (min-width: 1600px) {
+    --main-container: 1656px;
+  }
+  .header-top {
+    background-color: $theme-color;
+    color: $white-color;
+  }
+  .header-links {
+    ul {
+      margin: 0;
+      padding: 0;
+      li {
+        list-style: none;
+        display: inline-block;
+        position: relative;
+        &:first-child {
+          padding-right: 20px;
+          margin-right: 20px;
+          &::after {
+            content: "";
+            position: absolute;
+            width: 2px;
+            height: 15px;
+            right: 0;
+            top: 50%;
+            background: #5270dd;
+            transform: translateY(-50%);
+          }
+        }
+        a {
+          color: $white-color;
+          font-size: 12px;
+          font-family: $body-font;
+          text-transform: capitalize;
+          position: relative;
+          &:hover {
+            color: $secondary-color;
+          }
+          .clock-icon {
+            width: 55px;
+            height: 45px;
+            line-height: 45px;
+            text-align: center;
+            background-color: #0000002c;
+            color: $secondary-color;
+            font-size: 13px;
+          }
+          i {
+            margin-right: 15px;
+          }
+        }
+      }
+    }
+  }
+  .header-social {
+    a {
+      color: $white-color;
+      width: 30px;
+      height: 30px;
+      line-height: 32px;
+      text-align: center;
+      border-radius: 100%;
+      background-color: #0000002c;
+      margin-right: 5px;
+      display: inline-block;
+      font-size: 10px;
+      &:hover {
+        background-color: $secondary-color;
+        color: $white-color;
+      }
+    }
+  }
+  .vs-logo {
+    top: 0;
+    position: relative;
+    margin-right: 0;
+    padding: 36px 50px 36px 0;
+    a {
+      position: relative;
+      z-index: 1;
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 99999px;
+      z-index: 0;
+      background-color: $title-color;
+      border-radius: 0;
+      border-bottom: 4px solid $theme-color;
+    }
+  }
+  .bar-btn {
+    .bar {
+      &:after,
+      &:before {
+        background-color: $title-color;
+      }
+    }
+  }
+  .header-btns {
+    top: 0;
+    margin-left: 0;
+    .style3 {
+      background-color: $secondary-color;
+      border-color: $title-color;
+      color: $title-color;
+      font-size: 14px;
+      padding: 12px 30px;
+      &:hover {
+        background-color: $theme-color;
+        color: $white-color;
+      }
+    }
+    .eject {
+      width: 40px;
+      height: 40px;
+      line-height: 40px;
+      background-color: $title-color;
+      color: $white-color;
+      border-radius: 100%;
+      text-align: center;
+      margin-left: 20px;
+      transition: all 0.3s ease;
+      &:hover {
+        background-color: $theme-color;
+      }
+    }
+  }
+  .header-middle {
+    padding: 0 20px 0 40px;
+    @include xl {
+      padding: 0 10px 0 10px;
+    }
+    .dropdown {
+      button {
+        color: $title-color;
+        &:hover {
+          color: $theme-color;
+        }
+      }
+    }
+  }
+  .sticky-active {
+    &:not(.active) {
+      position: relative;
+      z-index: 9;
+    }
+
+    &.active {
+      background-color: $white-color;
+      padding: 0 10px 0 0;
+      box-shadow: 0px 10px 20px -15px rgb(0 0 0 / 39%);
+      .vs-logo {
+        padding: 5px 10px 5px 0;
+        img {
+          padding: 10px 0;
+          max-width: 100px;
+        }
+      }
+      .menu-area {
+        background-color: $title-color;
+        box-shadow: 0 0 20px 0 rgba(#000, 0.07);
+      }
+      .menu-style2 {
+        text-align: center;
+        > ul {
+          > li {
+            > a {
+              padding: 37.5px 0;
+            }
+          }
+        }
+      }
+      .vs-menu-toggle {
+        background-color: $theme-color;
+      }
+    }
+  }
+  .menu-style3 {
+    text-align: left;
+  }
+  .menu-style3 > ul > li > a .new-label {
+    top: -8px;
+  }
+  .main-menu > ul > li > a {
+    color: $title-color;
+    padding: 20px 0 20px 0;
+    &:hover {
+      color: $secondary-color;
+    }
+    &::before {
+      background-color: $title-color;
+    }
+  }
+  .menu-area {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+  }
+  .sticky-wrapper {
+    position: absolute;
+    width: 100%;
+    background: $white-color;
+  }
+}
+.vs-logo {
+  position: relative;
+  top: 45px;
+  text-align: right;
+  margin-right: 35px;
+  @include xl {
+    margin-right: 0;
+  }
+}
+.social-media {
+  padding: 7px 0;
+  a {
+    color: $white-color;
+    width: 30px;
+    height: 30px;
+    line-height: 32px;
+    text-align: center;
+    border-radius: 100%;
+    background-color: #0000002c;
+    margin-right: 5px;
+    display: inline-block;
+    font-size: 10px;
+
+    &:hover {
+      background-color: $secondary-color;
+      color: $title-color;
+    }
+  }
+}
+.social-media2 {
+  a {
+    color: $white-color;
+    width: 38px;
+    height: 38px;
+    line-height: 38px;
+    text-align: center;
+    border-radius: 100%;
+    background-color: $title-color;
+    margin-right: 5px;
+    display: inline-block;
+    font-size: 14px;
+
+    &:hover {
+      background-color: $theme-color;
+      color: $white-color;
+    }
+  }
+}
+.main-menu {
+  a {
+    display: block;
+    position: relative;
+    font-family: $body-font;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 15px;
+    color: $white-color;
+    letter-spacing: 1px;
+
+    @include xl {
+      font-size: 16px;
+    }
+
+    &:hover {
+      color: $secondary-color;
+    }
+  }
+  > ul {
+    > li {
+      margin: 0 24px;
+
+      @include xl {
+        margin: 0 18px;
+      }
+
+      > a {
+        transition: all 0.4s ease;
+        .new-label {
+          position: absolute;
+          top: 12px;
+          right: -16px;
+          font-size: 11px;
+          border-radius: 3px;
+          background-color: $title-color;
+        }
+
+        .has-new-lable {
+          position: relative;
+        }
+      }
+    }
+  }
+  ul {
+    margin: 0;
+    padding: 0;
+
+    li {
+      list-style-type: none;
+      display: inline-block;
+      position: relative;
+
+      &.menu-item-has-children {
+        > a {
+          &:after {
+            content: "\f107";
+            position: relative;
+            font-family: $icon-font;
+            margin-left: 5px;
+            top: -0.8px;
+            font-size: 0.8rem;
+          }
+        }
+      }
+
+      &:last-child {
+        margin-right: 0;
+      }
+
+      &:first-child {
+        margin-left: 0;
+      }
+
+      &:hover {
+        > ul.sub-menu,
+        ul.mega-menu {
+          visibility: visible;
+          opacity: 1;
+          margin-top: 0;
+          z-index: 9;
+        }
+      }
+    }
+  }
+  ul.sub-menu,
+  ul.mega-menu {
+    position: absolute;
+    text-align: left;
+    top: 100%;
+    left: 0;
+    background-color: $title-color;
+    visibility: hidden;
+    min-width: 190px;
+    width: max-content;
+    padding: 7px;
+    left: -14px;
+    margin-top: 50px;
+    opacity: 0;
+    z-index: -1;
+    border-bottom: 3px solid $secondary-color;
+    box-shadow: 0px 10px 60px 0px rgba(0, 0, 0, 0.09),
+      0px 3px 0px 0px rgba(231, 13, 60, 0.004);
+    transform-origin: top center;
+    transition: margin-top 0.4s ease-in-out 0s, visibility 0.4s ease-in-out 0s,
+      opacity 0.4s ease-in-out 0s, z-index 0s;
+
+    a {
+      font-size: 16px;
+      line-height: 30px;
+    }
+  }
+
+  ul.sub-menu {
+    padding: 18px 20px;
+    left: -27px;
+
+    &:before {
+      content: "";
+      position: absolute;
+      left: 34.5px;
+      top: 30px;
+      width: 1px;
+      background-color: #ededed;
+      height: calc(100% - 62px);
+    }
+
+    li {
+      display: block;
+      margin: 0 0;
+      padding: 3px 9px;
+
+      &.menu-item-has-children {
+        > a:after {
+          content: "\f105";
+          float: right;
+          top: 3px;
+        }
+      }
+
+      a {
+        position: relative;
+        padding-left: 21px;
+
+        &:before {
+          content: "\f111";
+          position: absolute;
+          top: 2.5em;
+          left: 0;
+          font-family: $icon-font;
+          width: 11px;
+          height: 11px;
+          text-align: center;
+          border-radius: 50%;
+          display: inline-block;
+          font-size: 0.2em;
+          line-height: 11.5px;
+          color: $secondary-color;
+          font-weight: 700;
+          background-color: $white-color;
+          box-shadow: inset 0px 2px 4px 0px rgba(#ff741b, 0.4);
+        }
+      }
+
+      ul.sub-menu {
+        left: 100%;
+        right: auto;
+        top: 0;
+        margin: 0 0;
+        margin-left: 20px;
+
+        li {
+          ul {
+            left: 100%;
+            right: auto;
+          }
+        }
+      }
+    }
+  }
+
+  .mega-menu-wrap {
+    position: static;
+  }
+
+  ul.mega-menu {
+    display: flex;
+    justify-content: space-between;
+    text-align: left;
+    width: 100%;
+    max-width: var(--main-container);
+    padding: 20px 15px 23px 15px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    li {
+      display: block;
+      width: 100%;
+      padding: 0 15px;
+
+      li {
+        padding: 4px 0;
+      }
+
+      a {
+        display: inline-block;
+      }
+    }
+
+    > li {
+      > a {
+        display: block;
+        padding: 0;
+        padding-bottom: 15px;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 700;
+        color: $secondary-color;
+
+        &::after,
+        &::before {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 15px;
+          height: 1px;
+          background-color: $secondary-color;
+        }
+
+        &::after {
+          width: calc(100% - 20px);
+          left: 20px;
+        }
+
+        &:hover {
+          padding-left: 0;
+        }
+      }
+    }
+  }
+}
+.menu-style1 {
+  & > ul {
+    & > li {
+      & > a {
+        padding: 37.5px 0;
+      }
+      &.menu-item-has-children {
+        & > a {
+          &::before {
+            content: "";
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            bottom: 0;
+            background-color: $white-color;
+            left: 50%;
+            transform: translateX(-50%);
+            visibility: hidden;
+            opacity: 0;
+            transition: all 0.4s ease;
+            border-radius: 6px;
+          }
+        }
+      }
+      & > a {
+        &:hover {
+          &::before {
+            visibility: visible;
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+}
+.menu-style2 {
+  text-align: center;
+  > ul {
+    > li {
+      > a {
+        padding: 30px 0;
+        &::before {
+          content: "";
+          position: absolute;
+          width: 50px;
+          height: 3px;
+          bottom: 0;
+          background-color: $white-color;
+          left: 50%;
+          transform: translateX(-50%);
+          visibility: hidden;
+          opacity: 0;
+          transition: all 0.4s ease;
+          border-radius: 6px;
+        }
+        &:hover {
+          &::before {
+            visibility: visible;
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+}
+.header-btns {
+  display: flex;
+  align-items: center;
+  position: relative;
+  top: 45px;
+  margin-left: 35px;
+  @include xl {
+    margin-left: 0;
+  }
+  a,
+  button {
+    margin-right: 5px;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+.header-middle .dropdown {
+  button {
+    background: transparent;
+    border: unset;
+    color: $white-color;
+    font-size: 15px;
+    font-weight: 700;
+    &:hover {
+      color: $secondary-color;
+    }
+  }
+  .dropdown-menu {
+    transform: translate(0px, 66px) !important;
+    min-width: 5rem;
+    padding: 1rem 0;
+    .dropdown-item:hover {
+      color: #1e2125;
+      background-color: $secondary-color;
+    }
+  }
+}
+
+@include ml {
+  .main-menu {
+    > ul {
+      > li {
+        margin: 0 12px;
+      }
+    }
+  }
+}
+@include xl {
+  .header-layout3 {
+    .vs-logo {
+      padding: 15px 50px 15px 0;
+    }
+    .main-menu > ul > li {
+      margin: 0 8px;
+    }
+  }
+}
+@include lg {
+  .main-menu {
+    > ul {
+      > li {
+        margin: 0 10px;
+      }
+    }
+  }
+  .header-info {
+    display: block;
+    --icon-size: 40px;
+
+    .header-layout2 {
+      .menu-area {
+        position: relative;
+        background-color: $title-color;
+      }
+    }
+  }
+  .header-layout2 {
+    .menu-style2 {
+      text-align: end;
+    }
+  }
+}
+@include md {
+  .vs-logo {
+    top: 0;
+    text-align: left;
+    img {
+      padding: 10px 0;
+    }
+  }
+  .sticky-active {
+    &.active {
+      padding: 8px 0;
+    }
+  }
+  .header-social {
+    padding: 10px 0;
+  }
+  .header-middle {
+    &::after {
+      display: none;
+    }
+  }
+  .main-menu > ul > li {
+    margin: 0 10px;
+  }
+  .header-layout1 {
+    .manu-inner {
+      &::after {
+        display: none;
+      }
+      &::before {
+        display: none;
+      }
+    }
+    .header-middle {
+      border-bottom: none !important;
+      justify-content: flex-end;
+      &::before {
+        display: none;
+      }
+      &::after {
+        display: none;
+      }
+    }
+  }
+  .menu-inner {
+    &::after,
+    &::before {
+      display: none;
+    }
+  }
+  .header-layout3 {
+    .vs-logo {
+      padding: 5px 30px 5px 0;
+    }
+    .header-middle {
+      padding: 0 10px 0 40px;
+    }
+  }
+}
+@include sm {
+  .vs-logo {
+    img {
+      max-width: 100px;
+      height: auto;
+    }
+  }
+}

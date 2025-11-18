@@ -1,0 +1,29 @@
+{% extends 'main/base.html' %}
+{% block content %}
+<div class="container py-4">
+    <h3>Tekshirish: {{ activity.title }}</h3>
+    <p><strong>Xodim:</strong> {{ activity.employee.full_name }}</p>
+    <p><strong>Tavsif:</strong> {{ activity.description|default:"—" }}</p>
+    {% if activity.evidence_file %}
+        <p><a href="{{ activity.evidence_file.url }}" target="_blank">📄 Hujjatni ko'rish</a></p>
+    {% endif %}
+
+    {% if error %}
+        <div class="alert alert-danger">{{ error }}</div>
+    {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label>Ball (faqat tasdiqlashda):</label>
+            <input type="number" name="points" class="form-control" min="0" step="0.5" placeholder="">
+        </div>
+        <div class="mb-3">
+            <label>Izoh (rad etishda):</label>
+            <textarea name="comment" class="form-control" rows="3"></textarea>
+        </div>
+        <button name="action" value="approve" class="btn btn-success me-2">✅ Tasdiqlash</button>
+        <button name="action" value="reject" class="btn btn-danger">❌ Rad etish</button>
+    </form>
+</div>
+{% endblock %}

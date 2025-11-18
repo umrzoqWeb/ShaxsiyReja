@@ -1,0 +1,16 @@
+{% extends "admin/change_list.html" %}
+{% load i18n %}
+
+{% block object-tools-items %}
+  {{ block.super }}
+  <li>
+    <form method="get" action="{% url 'admin:kitoblar_student_sync' %}" style="display:flex; gap:.25rem; align-items:center;">
+      <input type="number" name="limit" value="200" min="1" class="vTextField" style="width:6rem;" title="Har sahifadagi yozuvlar">
+      <input type="text"   name="pages" value="all" class="vTextField" style="width:6rem;" title="all yoki sahifa soni (masalan 10)">
+      <label style="display:flex; align-items:center; gap:.25rem; margin:0 .5rem;">
+        <input type="checkbox" name="update" value="1"> {% trans "Mavjudlarni yangilash" %}
+      </label>
+      <button type="submit" class="button">{% trans "Sinxronizatsiya" %}</button>
+    </form>
+  </li>
+{% endblock %}

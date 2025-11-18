@@ -1,0 +1,161 @@
+.vs-pagination {
+  text-align: center;
+  margin-bottom: 30px;
+
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    display: inline-block;
+    margin: 0 3px;
+    list-style-type: none;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+
+  span,
+  a {
+    display: inline-block;
+    text-align: center;
+    position: relative;
+    border: none;
+    font-family: $body-font;
+    color: $title-color;
+    background-color: #F5F5F5;
+    width: 50px;
+    height: 50px;
+    line-height: 52px;
+    font-weight: 700;
+    padding: 0;
+    font-size: 16px;
+    z-index: 1;
+    border-radius: 50%;
+    vertical-align: middle;
+
+    &.active,
+    &:hover {
+      color: $white-color;
+      background-color: $secondary-color;
+      box-shadow: none;
+    }
+  }
+
+}
+
+
+.post-pagination {
+  margin: 50px 0;
+}
+.post-pagi-box {
+  a {
+     font-size: 22px;
+     text-transform: uppercase;
+     color: $title-color;
+     font-weight: 500;
+     display: flex;
+     align-items: center;
+     font-family: $title-font;
+     gap: 15px;
+
+     i {
+        font-size: 22px;
+        width: 65px;
+        height: 60px;
+        line-height: 60px;
+        text-align: center;
+        display: inline-block;
+        background-color: $title-color;
+        color: var(--white-color);
+        transition: all ease .4s;
+     }
+
+     &:hover {
+        i {
+           background-color: $secondary-color;
+        }
+     }
+  }
+}
+
+.post-pagi-box {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 29px 0px;
+
+  .pagi-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: $title-color;
+    margin: 4.5px 0 0 0;
+    max-width: 250px;
+    flex: 1;
+
+    a {
+      color: inherit;
+
+      &:hover {
+        color: $secondary-color;
+      }
+    }
+  }
+
+  &.next {
+    flex-direction: row-reverse;
+    text-align: right;
+  }
+
+}
+
+
+@include ml {
+  .post-pagination {
+    margin: 40px 0;
+  }
+}
+
+
+@include sm {
+  .vs-pagination {
+
+    span,
+    a {
+      width: 40px;
+      height: 40px;
+      line-height: 40px;
+      font-size: 14px;
+      padding: 0 10px;
+      vertical-align: middle;
+
+      i {
+        vertical-align: middle;
+      }
+    }
+  }
+
+  .post-pagi-box {
+    display: block;
+    padding: 20px 20px;
+
+    >a {
+      margin-bottom: 10px;
+      font-size: 13px;
+      font-weight: 600;
+      line-height: 120%;
+      >i{
+        font-size: 16px;
+        width: 34px;
+        height: 32px;
+        line-height: 32px;
+      }
+    }
+  }
+}

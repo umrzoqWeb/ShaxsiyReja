@@ -1,0 +1,105 @@
+.accomodation-layout1 {
+  @media (min-width: 1600px) {
+    --main-container: 1800px;
+  }
+  .testi-body {
+    position: relative;
+    .testi-img {
+      overflow: hidden;
+      border-radius: 6px;
+    }
+    .testi-name {
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 0;
+      position: relative;
+      font-size: 45px;
+      @include lg {
+        font-size: 30px;
+      }
+      a {
+        color: $title-color;
+        &:hover {
+          color: $theme-color;
+        }
+      }
+      &::after {
+        content: "";
+        position: absolute;
+        right: -15%;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 40px;
+        height: 40px;
+        border-radius: 100%;
+        background-color: var(--title-color);
+        @include lg {
+          display: none;
+        }
+      }
+    }
+    .testi-degi {
+      color: $title-color;
+      text-transform: uppercase;
+      letter-spacing: 0.3em;
+    }
+    .testi-content {
+      position: absolute;
+      bottom: 10%;
+      right: 0;
+      padding: 60px 142px 60px 50px;
+      display: inline-block;
+      background-color: var(--sec-color);
+      border-bottom: 4px solid var(--white-color);
+      border-radius: 0px 0px 0px 0px;
+      @include lg {
+        padding: 15px;
+      }
+    }
+  }
+  .accomodation-title {
+    text-transform: uppercase;
+    color: $white-color;
+    letter-spacing: 1px;
+    line-height: 65%;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    margin-bottom: 68px;
+  }
+}
+@media screen and (min-width: $ml) {
+  .accomodation-title {
+    font-size: 70px;
+  }
+}
+@include lg {
+  .accomodation-title {
+    font-size: 50px;
+  }
+}
+@include md {
+  .accomodation-title {
+    font-size: 30px;
+    margin-bottom: 40px;
+  }
+  .testi-nav {
+    display: none;
+  }
+}
+@include xs {
+  .accomodation-layout1 .testi-body .testi-content {
+    padding: 10px 20px;
+    bottom: 0;
+    border-bottom: none;
+    .testi-degi {
+      font-size: 14px;
+    }
+    .testi-name {
+      font-size: 18px;
+      &::after {
+        display: none;
+      }
+    }
+  }
+}

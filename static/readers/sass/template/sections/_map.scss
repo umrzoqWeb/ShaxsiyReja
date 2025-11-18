@@ -1,0 +1,82 @@
+.map-shape1 {
+   position: absolute;
+   border-radius: 0;
+   height: -webkit-fill-available;
+   left: 0;
+   max-height: fit-content;
+   top: 0;
+   z-index: 0;
+   width: 50%;
+}
+
+.map-box {
+   position: relative;
+   z-index: 1;
+
+   .map-img {
+      margin-bottom: 50px;
+   }
+
+   .box-title {
+      text-align: left;
+      color: $secondary-color;
+      text-transform: uppercase;
+      font-size: 20px;
+      font-weight: 500;
+      font-family: $body-font;
+      letter-spacing: 1px;
+      margin-bottom: 0;
+   }
+}
+
+.img-box1 {
+   text-align: right;
+
+   .img-title {
+      color: $white-color;
+      text-align: center;
+      font-weight: 400;
+      text-transform: uppercase;
+      font-size: 20px;
+      font-family: $body-font;
+      margin-bottom: 40px;
+   }
+}
+
+
+@include lg {
+   .map-box {
+      text-align: center;
+      margin-bottom: 50px;
+
+      .box-title {
+         text-align: center;
+      }
+   }
+
+   .map-shape1 {
+      width: 100%;
+   }
+}
+
+@include md {
+   .map-shape1 {
+      width: 100%;
+   }
+
+   .map-box {
+      margin-bottom: 50px;
+
+      .box-title {
+         text-align: center;
+      }
+
+      .map-img {
+         text-align: center;
+      }
+   }
+
+   .map-shape1 {
+      width: 100%;
+   }
+}

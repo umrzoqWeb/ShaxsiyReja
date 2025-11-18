@@ -1,0 +1,109 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}Talaba ishini tekshirish — {{ activity.get_activity_type_display }}{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h4 class="text-primary">
+            <i class="bi bi-eye me-2"></i>Tekshirish: {{ activity.get_activity_type_display }}
+        </h4>
+        <a href="{% url 'student_reviewer_dashboard' %}" class="btn btn-outline-secondary btn-sm">
+            <i class="bi bi-arrow-left me-1"></i>Orqaga
+        </a>
+    </div>
+
+    <div class="card shadow-sm border-0 mb-4">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <p><strong>Talaba:</strong> {{ activity.student.full_name }}</p>
+                    <p><strong>Guruh:</strong> {{ activity.student.group.name|default:"—" }}</p>
+                    <p><strong>Mutaxassiflik:</strong> {{ activity.student.specialty.name|default:"—" }}</p>
+                </div>
+                <div class="col-md-6">
+                    <p><strong>Mezon:</strong> {{ activity.get_activity_type_display }}</p>
+                    <p><strong>Bo'lim:</strong> {{ activity.get_section_display }}</p>
+                    <p><strong>Maksimal ball:</strong> {{ max_ball }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% if activity.evidence_file %}
+        <div class="card shadow-sm border-0 mb-4">
+            <div class="card-body">
+                <p><strong>Hujjat nomi:</strong> {{ activity.title|default:"Noma'lum" }}</p>
+                <p><strong>Izoh:</strong> {{ activity.description|default:"—" }}</p>
+                <a href="{{ activity.evidence_file.url }}" target="_blank" class="btn btn-primary btn-sm">
+                    <i class="bi bi-file-earmark-pdf me-1"></i>Faylni ko'rish
+                </a>
+            </div>
+        </div>
+    {% else %}
+        <div class="alert alert-info">
+            <i class="bi bi-info-circle me-2"></i>
+            Ushbu mezon bo'yicha hujjat yuklanmaydi. Ball to'g'ridan-to'g'ri beriladi.
+        </div>
+    {% endif %}
+
+    <form method="post" class="mt-3">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label class="form-label">Qaror</label>
+            <div class="d-flex gap-3">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="action" value="approve" id="approve" required>
+                    <label class="form-check-label" for="approve">✅ Tasdiqlash</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="action" value="reject" id="reject">
+                    <label class="form-check-label" for="reject">❌ Rad etish</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-3 d-none" id="pointsDiv">
+            <label for="points">Ball (maksimal: {{ max_ball }})</label>
+            <input type="number" step="0.5" min="0" max="{{ max_ball }}" class="form-control" name="points" id="points">
+        </div>
+
+        <div class="mb-3" id="commentDiv" style="display: none;">
+            <label for="comment">Izoh (rad etishda majburiy)</label>
+            <textarea name="comment" id="comment" class="form-control" rows="3" placeholder="Rad etish sababini kiriting..."></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-success">Saqlash</button>
+    </form>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const approveRadio = document.getElementById('approve');
+    const rejectRadio = document.getElementById('reject');
+    const pointsDiv = document.getElementById('pointsDiv');
+    const commentDiv = document.getElementById('commentDiv');
+
+    function toggleFields() {
+        if (rejectRadio.checked) {
+            pointsDiv.classList.add('d-none');
+            commentDiv.style.display = 'block';
+        } else if (approveRadio.checked) {
+            pointsDiv.classList.remove('d-none');
+            commentDiv.style.display = 'none';
+        }
+    }
+
+    approveRadio.addEventListener('change', toggleFields);
+    rejectRadio.addEventListener('change', toggleFields);
+
+    // Boshlang'ich holatni o'rnatish
+    toggleFields();
+});
+</script>
+
+<style>
+.gap-3 { gap: 1rem; }
+</style>
+{% endblock %}

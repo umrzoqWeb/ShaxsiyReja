@@ -1,0 +1,97 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}{{ mezon_name }}{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h4 class="text-primary">
+            <i class="bi bi-award me-2"></i>{{ mezon_name }}
+        </h4>
+        {% if needs_document %}
+            <a href="{% url 'student_add_activity' section activity_type %}" class="btn btn-primary btn-sm">
+                <i class="bi bi-cloud-arrow-up me-1"></i>Yangi hujjat yuklash
+            </a>
+        {% else %}
+            <!-- "Hujjat talab qilinmaydi" mezonlar uchun tekshiruvchi uchun ball qo'yish tugmasi -->
+            {% if user.reviewer %}
+                {% if user.reviewer.can_review_student_taught and section == 'taught' or
+                      user.reviewer.can_review_student_research and section == 'research' or
+                      user.reviewer.can_review_student_social and section == 'social' %}
+                    {% if not activities.first or activities.first.status == 'pending' %}
+                        <a href="{% url 'assign_points_to_student_activity' activities.first.id %}" class="btn btn-warning btn-sm">
+                            <i class="bi bi-plus-circle me-1"></i>Ball qo'yish
+                        </a>
+                    {% endif %}
+                {% endif %}
+            {% endif %}
+        {% endif %}
+    </div>
+
+    {% if activities %}
+        <div class="row g-4">
+            {% for act in activities %}
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm border rounded-3">
+                    <div class="card-body">
+                        {% if act.title %}
+                            <h6>{{ act.title }}</h6>
+                        {% endif %}
+                        <p class="text-muted small">{{ act.description|default:"Tavsif yo'q" }}</p>
+                        {% if act.evidence_file %}
+                            <a href="{{ act.evidence_file.url }}" target="_blank" class="text-primary">
+                                <i class="bi bi-file-earmark-text me-1"></i>Hujjatni ko'rish
+                            </a>
+                        {% endif %}
+
+                        <div class="mt-3 pt-2 border-top">
+                            <div class="d-flex justify-content-between">
+                                <small class="text-muted">Ball: {{ act.final_points }}</small>
+                                <span class="badge
+                                    {% if act.status == 'approved' %}bg-success
+                                    {% elif act.status == 'rejected' %}bg-danger
+                                    {% else %}bg-warning text-dark{% endif %}">
+                                    {{ act.get_status_display }}
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Agar tekshiruvchi bo'lsa va hali baholanmagan bo'lsa -->
+                        {% if user.reviewer and act.status == 'pending' and needs_document %}
+                            <div class="mt-2">
+                                <a href="{% url 'review_student_activity' act.id %}" class="btn btn-sm btn-outline-primary w-100">
+                                    <i class="bi bi-eye me-1"></i> Tekshirish
+                                </a>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="text-center py-5">
+            <i class="bi bi-inbox fs-1 text-secondary mb-3"></i>
+            <h5 class="text-muted">Hali hech qanday hujjat yuklanmagan</h5>
+            {% if needs_document %}
+                <a href="{% url 'student_add_activity' section activity_type %}" class="btn btn-outline-primary mt-2">
+                    Birinchi hujjatni yuklang
+                </a>
+            {% else %}
+                <p class="text-muted">Ushbu mezon bo'yicha hujjat talab qilinmaydi. Tekshiruvchi tomonidan baholanadi.</p>
+                <!-- Agar tekshiruvchi bo'lsa, "Ball qo'yish" tugmasini ko'rsatish -->
+                {% if user.reviewer %}
+                    {% if user.reviewer.can_review_student_taught and section == 'taught' or
+                          user.reviewer.can_review_student_research and section == 'research' or
+                          user.reviewer.can_review_student_social and section == 'social' %}
+                        <a href="{% url 'assign_points_to_student_activity' activities.first.id|default:0 %}?type={{ activity_type }}&section={{ section }}" class="btn btn-outline-warning mt-2">
+                            <i class="bi bi-plus-circle me-1"></i>Ball qo'yish
+                        </a>
+                    {% endif %}
+                {% endif %}
+            {% endif %}
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

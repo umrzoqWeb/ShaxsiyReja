@@ -1,0 +1,27 @@
+.subscribe {
+   background: $secondary-color !important;
+   padding: 85px 0;
+
+
+}
+
+.form-title {
+   text-transform: uppercase;
+   font-size: 45px;
+   font-weight: 600;
+   margin: 0 0 7.5px 0;
+
+   @include sm {
+      margin-bottom: 50px;
+   }
+}
+
+.form-text {
+   font-size: 15px;
+   text-transform: capitalize;
+   color: $body-color;
+   font-weight: 500;
+   letter-spacing: 1px;
+   margin-bottom: 30px;
+
+}

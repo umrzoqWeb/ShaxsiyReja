@@ -1,0 +1,165 @@
+.image-scale-hover {
+  overflow: hidden;
+
+  img {
+    transition: all ease 0.4s;
+    transform: scale(1.001);
+  }
+
+  &:hover {
+    img {
+      transform: scale(1.2);
+    }
+  }
+}
+
+.z-index-step1 {
+  position: relative;
+  z-index: 4 !important;
+}
+
+.z-index-common {
+  position: relative;
+  z-index: 3;
+}
+
+.z-index-n1 {
+  z-index: -1;
+}
+
+.vs-media {
+  display: flex;
+}
+
+.media-body {
+  flex: 1;
+}
+
+.badge {
+  position: absolute;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  display: inline-block;
+  text-align: center;
+  background-color: $title-color;
+  color: $white-color;
+  padding: 0.35em 0.55em;
+  border-radius: 50%;
+}
+
+.new-label {
+  font-size: 12px;
+  background-color: $secondary-color;
+  color: $white-color;
+  line-height: 1;
+  padding: 5px 5px 3px 5px;
+  border-radius: 6px;
+  text-transform: capitalize;
+  position: relative;
+  top: -1px;
+  font-weight: 500;
+  margin-left: 5px;
+  animation: newlabel infinite 0.4s;
+}
+
+.video-box {
+  a {
+    i {
+      color: $title-color;
+      background-color: $secondary-color;
+    }
+    &:hover {
+      i {
+        background-color: $title-color;
+      }
+      &::before {
+        background-color: $white-color;
+      }
+    }
+  }
+  .video-title {
+    font-size: 15px;
+    font-weight: 500;
+    font-family: $body-font;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 30px;
+    margin-bottom: 0;
+  }
+}
+
+.mega-hover {
+  position: relative;
+  overflow: hidden;
+  border-radius: 6px;
+
+  img {
+    transition: all 2s ease;
+    transform: scale(1);
+  }
+
+  &:after,
+  &:before {
+    content: "";
+    position: absolute;
+    pointer-events: none;
+    opacity: 1;
+    z-index: 3;
+    transform: rotate(5deg);
+  }
+
+  &:before {
+    top: 0;
+    right: 51%;
+    bottom: 0;
+    left: 50%;
+    background: rgba(255, 255, 255, 0.3);
+  }
+
+  &:after {
+    top: 50%;
+    right: 0;
+    bottom: 50%;
+    left: 0;
+    background: rgba(255, 255, 255, 0.6);
+  }
+  &:hover {
+    &:before {
+      left: 0;
+      right: 0;
+      opacity: 0;
+      transition: all 900ms linear;
+    }
+    &:after {
+      top: 0;
+      bottom: 0;
+      opacity: 0;
+      transition: all 900ms linear;
+    }
+    img {
+      transform: scale(1.05);
+    }
+  }
+}
+.bg-cover {
+  background-size: cover;
+}
+
+@keyframes newlabel {
+  0% {
+    background-color: $title-color;
+  }
+  50% {
+    background-color: $secondary-color;
+  }
+  100% {
+    background-color: $title-color;
+  }
+}
+
+@media (max-width: 1550px) {
+  .d-xxxl-block {
+    display: block !important;
+  }
+}

@@ -1,0 +1,77 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}{{ mezon_name }} — Baholash mezonlari{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <!-- Sarlavha va "Yangi ish yuklash" tugmasi -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h4 class="text-primary">
+            <i class="bi bi-award me-2"></i>{{ mezon_name }}
+        </h4>
+        <a href="{% url 'add_activity' activity_type %}" class="btn btn-success btn-sm">
+            <i class="bi bi-cloud-arrow-up me-1"></i>Yangi ish yuklash
+        </a>
+    </div>
+
+    <!-- Ishlar ro'yxati -->
+    {% if activities %}
+        <div class="row g-4">
+            {% for act in activities %}
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm border-0">
+                    <div class="card-body d-flex flex-column">
+                        <!-- Tavsif -->
+                        <p class="mb-3 flex-grow-1">
+                            {{ act.description|default:"Tavsif kiritilmagan" }}
+                        </p>
+
+                        <!-- Hujjat -->
+                        {% if act.evidence_file %}
+                            <div class="mb-2">
+                                <a href="{{ act.evidence_file.url }}" target="_blank" class="text-decoration-none">
+                                    <i class="bi bi-file-earmark-text text-primary me-1"></i>
+                                    <small>Hujjatni ko'rish</small>
+                                </a>
+                            </div>
+                        {% endif %}
+
+                        <!-- Ball va sana -->
+                        <div class="d-flex justify-content-between align-items-center mt-auto pt-2 border-top">
+                            <div>
+                                <span class="badge bg-light text-dark">
+                                    <i class="bi bi-star-fill text-warning me-1"></i>
+                                    {{ act.points_awarded }} ball
+                                </span>
+                            </div>
+                            <small class="text-muted">{{ act.created_at|date:"d.m.Y" }}</small>
+                        </div>
+
+                        <!-- Holat -->
+                        <div class="mt-2">
+                            {% if act.status == 'approved' %}
+                                <span class="badge bg-success"><i class="bi bi-check-circle me-1"></i>Tasdiqlangan</span>
+                            {% elif act.status == 'rejected' %}
+                                <span class="badge bg-danger"><i class="bi bi-x-circle me-1"></i>Rad etilgan</span>
+                            {% else %}
+                                <span class="badge bg-warning text-dark"><i class="bi bi-clock me-1"></i>Jarayonda</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="text-center py-5">
+            <i class="bi bi-inbox fs-1 text-secondary mb-3"></i>
+            <h5 class="text-muted">Hali hech qanday ish yuklanmagan</h5>
+            <p class="text-muted">Bu mezon bo'yicha faoliyatingizni yuklang.</p>
+            <a href="{% url 'add_activity' activity_type %}" class="btn btn-outline-primary">
+                <i class="bi bi-plus-circle me-1"></i>Birinchi ishni yuklang
+            </a>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

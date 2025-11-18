@@ -1,0 +1,120 @@
+.service-style1 {
+  text-align: center;
+  background-color: $white-color;
+  box-shadow: 0px 4px 10px 0.77px rgba(130, 138, 138, 0.1);
+  border-radius: 207px 207px 3.5px 3.5px;
+  border-bottom: 6px solid $white-color;
+  padding: 45px;
+  transition: all 0.4s ease;
+  margin: 15px 0;
+  &:hover {
+    border-bottom: 6px solid $theme-color;
+    .service-icon {
+      background-color: $secondary-color;
+      color: var(--title-color);
+    }
+  }
+  .service-icon {
+    width: 99px;
+    height: 99px;
+    line-height: 99px;
+    border-radius: 100%;
+    background-color: $title-color;
+    transition: all 0.4s ease;
+  }
+  .service-title {
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    font-size: 22px;
+  }
+  .service-text {
+    margin-bottom: 30px;
+    font-weight: 500;
+  }
+  .style2 {
+    padding: 5.5px 31px;
+  }
+}
+.list-style3 {
+  ul {
+    margin-bottom: 0;
+    li {
+      list-style: none;
+      font-weight: 500;
+      margin-bottom: 10px;
+      font-size: 14px;
+      i {
+        font-size: 12px;
+        color: $secondary-color;
+        margin-right: 5px;
+      }
+      &:last-child {
+        margin-bottom: 0;
+      }
+      img {
+        margin-right: 8px;
+      }
+    }
+  }
+  &.style-dark {
+    ul {
+      li {
+        color: $title-color;
+        i {
+          color: $title-color;
+        }
+      }
+    }
+  }
+}
+.service-img1 {
+  overflow: hidden;
+  border-radius: 6px;
+}
+
+@include lg {
+  .service-style1 .service-title {
+    font-size: 18px;
+  }
+  .list-style3 ul li {
+    margin-bottom: 0px;
+    font-size: 12px;
+  }
+  .propertie-meta3::after {
+    display: none;
+  }
+}
+@include md {
+  .list-style3 ul li {
+    margin-bottom: 10px;
+    font-size: 14px;
+  }
+}
+@include sm {
+  .list-style3 ul {
+    margin-bottom: 0;
+    li {
+      margin-bottom: 0px;
+      font-size: 12px;
+    }
+  }
+}
+@include xs {
+  .propertie-meta3 span img {
+    margin-right: 2px;
+    max-width: 25px;
+  }
+  .list-style3 ul li {
+    margin-bottom: 0px;
+    font-size: 12px;
+  }
+  .list-style3 ul li img {
+    margin-right: 2px;
+  }
+}
+@media (max-width: 375px) {
+  .list-style3 ul li {
+    margin-bottom: 0px;
+    font-size: 11px;
+  }
+}

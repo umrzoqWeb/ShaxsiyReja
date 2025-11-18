@@ -1,0 +1,221 @@
+<div class="sidebar-list">
+    <!-- Sidebar Menu Start -->
+    <ul class="navbar-nav iq-main-menu" id="sidebar-menu">
+        <li class="nav-item static-item">
+            <a class="nav-link static-item disabled" href="#" tabindex="-1">
+                <span class="default-icon">Zarmed Universiteti</span>
+                <span class="mini-icon">-</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}" aria-current="page"
+               href="{% url 'home' %}">
+                <i class="icon">
+                    <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="icon-20">
+                        <path opacity="0.4"
+                              d="M16.0756 2H19.4616C20.8639 2 22.0001 3.14585 22.0001 4.55996V7.97452C22.0001 9.38864 20.8639 10.5345 19.4616 10.5345H16.0756C14.6734 10.5345 13.5371 9.38864 13.5371 7.97452V4.55996C13.5371 3.14585 14.6734 2 16.0756 2Z"
+                              fill="currentColor"></path>
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                              d="M4.53852 2H7.92449C9.32676 2 10.463 3.14585 10.463 4.55996V7.97452C10.463 9.38864 9.32676 10.5345 7.92449 10.5345H4.53852C3.13626 10.5345 2 9.38864 2 7.97452V4.55996C2 3.14585 3.13626 2 4.53852 2ZM4.53852 13.4655H7.92449C9.32676 13.4655 10.463 14.6114 10.463 16.0255V19.44C10.463 20.8532 9.32676 22 7.92449 22H4.53852C3.13626 22 2 20.8532 2 19.44V16.0255C2 14.6114 3.13626 13.4655 4.53852 13.4655ZM19.4615 13.4655H16.0755C14.6732 13.4655 13.537 14.6114 13.537 16.0255V19.44C13.537 20.8532 14.6732 22 16.0755 22H19.4615C20.8637 22 22 20.8532 22 19.44V16.0255C22 14.6114 20.8637 13.4655 19.4615 13.4655Z"
+                              fill="currentColor"></path>
+                    </svg>
+                </i>
+                <span class="item-name">Bosh sahifa</span>
+            </a>
+        </li>
+
+        <li>
+            <hr class="hr-horizontal">
+        </li>
+
+        <!-- XODIMLAR UCHUN MENYU (faqat xodimlar ko'radi) -->
+        {% if user.user_type == 'employee' %}
+            <li class="nav-item">
+                <a class="nav-link {% if request.resolver_match.url_name == 'taught' %}active{% endif %}"
+                   href="{% url 'taught' %}">
+                    <i class="icon">
+                        <svg class="icon-32" width="32" viewBox="0 0 24 24" fill="none"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                  d="M22 12C22 17.52 17.51 22 12 22L11.7202 21.9962C6.32942 21.8478 2 17.4264 2 12C2 6.49 6.48 2 12 2C17.51 2 22 6.49 22 12ZM10.02 8C9.73 8.3 9.73 8.77 10.03 9.06L12.98 12L10.03 14.94C9.73 15.23 9.73 15.71 10.02 16C10.32 16.3 10.79 16.3 11.08 16L14.57 12.53C14.71 12.39 14.79 12.2 14.79 12C14.79 11.8 14.71 11.61 14.57 11.47L11.08 8C10.94 7.85 10.75 7.78 10.56 7.78C10.36 7.78 10.17 7.85 10.02 8Z"
+                                  fill="currentColor"></path>
+                        </svg>
+                    </i>
+                    <span class="item-name">O‘quv-uslubiy ishlar <br> va ta’lim sifati</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {% if request.resolver_match.url_name == 'research' %}active{% endif %}"
+                   href="{% url 'research' %}">
+                    <i class="icon">
+                        <svg class="icon-32" width="32" viewBox="0 0 24 24" fill="none"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                  d="M22 12C22 17.52 17.51 22 12 22L11.7202 21.9962C6.32942 21.8478 2 17.4264 2 12C2 6.49 6.48 2 12 2C17.51 2 22 6.49 22 12ZM10.02 8C9.73 8.3 9.73 8.77 10.03 9.06L12.98 12L10.03 14.94C9.73 15.23 9.73 15.71 10.02 16C10.32 16.3 10.79 16.3 11.08 16L14.57 12.53C14.71 12.39 14.79 12.2 14.79 12C14.79 11.8 14.71 11.61 14.57 11.47L11.08 8C10.94 7.85 10.75 7.78 10.56 7.78C10.36 7.78 10.17 7.85 10.02 8Z"
+                                  fill="currentColor"></path>
+                        </svg>
+                    </i>
+                    <span class="item-name">Ilmiy-innovatsion <br> faoliyat</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {% if request.resolver_match.url_name == 'social' %}active{% endif %}"
+                   href="{% url 'social' %}">
+                    <i class="icon">
+                        <svg class="icon-32" width="32" viewBox="0 0 24 24" fill="none"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                  d="M22 12C22 17.52 17.51 22 12 22L11.7202 21.9962C6.32942 21.8478 2 17.4264 2 12C2 6.49 6.48 2 12 2C17.51 2 22 6.49 22 12ZM10.02 8C9.73 8.3 9.73 8.77 10.03 9.06L12.98 12L10.03 14.94C9.73 15.23 9.73 15.71 10.02 16C10.32 16.3 10.79 16.3 11.08 16L14.57 12.53C14.71 12.39 14.79 12.2 14.79 12C14.79 11.8 14.71 11.61 14.57 11.47L11.08 8C10.94 7.85 10.75 7.78 10.56 7.78C10.36 7.78 10.17 7.85 10.02 8Z"
+                                  fill="currentColor"></path>
+                        </svg>
+                    </i>
+                    <span class="item-name">Ijtimoiy-ma’naviy <br> faoliyat, <br> ijro intizomi</span>
+                </a>
+            </li>
+
+            <li>
+                <hr class="hr-horizontal">
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link {% if request.resolver_match.url_name == 'help_teacher' %}active{% endif %}"
+                   href="{% url 'help_teacher' %}">
+                    <i class="icon">
+                        <svg class="icon-32" width="32" viewBox="0 0 24 24" fill="none"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                  d="M22 12C22 17.52 17.51 22 12 22L11.7202 21.9962C6.32942 21.8478 2 17.4264 2 12C2 6.49 6.48 2 12 2C17.51 2 22 6.49 22 12ZM10.02 8C9.73 8.3 9.73 8.77 10.03 9.06L12.98 12L10.03 14.94C9.73 15.23 9.73 15.71 10.02 16C10.32 16.3 10.79 16.3 11.08 16L14.57 12.53C14.71 12.39 14.79 12.2 14.79 12C14.79 11.8 14.71 11.61 14.57 11.47L11.08 8C10.94 7.85 10.75 7.78 10.56 7.78C10.36 7.78 10.17 7.85 10.02 8Z"
+                                  fill="currentColor"></path>
+                        </svg>
+                    </i>
+                    <span class="item-name"> Yo'riqnoma </span>
+                </a>
+            </li>
+
+
+
+            {% if user.reviewer %}
+
+                <li>
+                    <hr class="hr-horizontal">
+                </li>
+
+                <!-- Xodimlarni tekshiruvchilar uchun -->
+                {% if user.reviewer.can_review_employee_taught or user.reviewer.can_review_employee_research or user.reviewer.can_review_employee_social %}
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.resolver_match.url_name == 'reviewer_dashboard' %}active{% endif %}"
+                           href="{% url 'reviewer_dashboard' %}">
+                            <i class="icon">
+                                <svg class="icon-32" width="32" viewBox="0 0 24 24" fill="none"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                          d="M22 12C22 17.52 17.51 22 12 22L11.7202 21.9962C6.32942 21.8478 2 17.4264 2 12C2 6.49 6.48 2 12 2C17.51 2 22 6.49 22 12ZM10.02 8C9.73 8.3 9.73 8.77 10.03 9.06L12.98 12L10.03 14.94C9.73 15.23 9.73 15.71 10.02 16C10.32 16.3 10.79 16.3 11.08 16L14.57 12.53C14.71 12.39 14.79 12.2 14.79 12C14.79 11.8 14.71 11.61 14.57 11.47L11.08 8C10.94 7.85 10.75 7.78 10.56 7.78C10.36 7.78 10.17 7.85 10.02 8Z"
+                                          fill="currentColor"></path>
+                                </svg>
+                            </i>
+                            <span class="item-name">Xodim ishlarini <br> tekshirish</span>
+                        </a>
+                    </li>
+                {% endif %}
+
+                <!-- Talabalarni tekshiruvchilar uchun -->
+                {% if user.reviewer.can_review_student_taught or user.reviewer.can_review_student_research or user.reviewer.can_review_student_social %}
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.resolver_match.url_name == 'student_reviewer_dashboard' %}active{% endif %}"
+                           href="{% url 'student_reviewer_dashboard' %}">
+                            <i class="icon">
+                                <svg class="icon-32" width="32" viewBox="0 0 24 24" fill="none"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                          d="M22 12C22 17.52 17.51 22 12 22L11.7202 21.9962C6.32942 21.8478 2 17.4264 2 12C2 6.49 6.48 2 12 2C17.51 2 22 6.49 22 12ZM10.02 8C9.73 8.3 9.73 8.77 10.03 9.06L12.98 12L10.03 14.94C9.73 15.23 9.73 15.71 10.02 16C10.32 16.3 10.79 16.3 11.08 16L14.57 12.53C14.71 12.39 14.79 12.2 14.79 12C14.79 11.8 14.71 11.61 14.57 11.47L11.08 8C10.94 7.85 10.75 7.78 10.56 7.78C10.36 7.78 10.17 7.85 10.02 8Z"
+                                          fill="currentColor"></path>
+                                </svg>
+                            </i>
+                            <span class="item-name">Talaba ishlarini <br> tekshirish</span>
+                        </a>
+                    </li>
+                {% endif %}
+            {% endif %}
+
+
+
+
+        {% endif %}
+
+
+
+        <!-- TALABALAR UCHUN MENYU (faqat talabalar ko'radi) -->
+        {% if user.user_type == 'student' %}
+            <li class="nav-item">
+                <a class="nav-link {% if request.resolver_match.url_name == 'student_taught' %}active{% endif %}"
+                   href="{% url 'student_taught' %}">
+                    <i class="icon">
+                        <svg class="icon-32" width="32" viewBox="0 0 24 24" fill="none"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                  d="M22 12C22 17.52 17.51 22 12 22L11.7202 21.9962C6.32942 21.8478 2 17.4264 2 12C2 6.49 6.48 2 12 2C17.51 2 22 6.49 22 12ZM10.02 8C9.73 8.3 9.73 8.77 10.03 9.06L12.98 12L10.03 14.94C9.73 15.23 9.73 15.71 10.02 16C10.32 16.3 10.79 16.3 11.08 16L14.57 12.53C14.71 12.39 14.79 12.2 14.79 12C14.79 11.8 14.71 11.61 14.57 11.47L11.08 8C10.94 7.85 10.75 7.78 10.56 7.78C10.36 7.78 10.17 7.85 10.02 8Z"
+                                  fill="currentColor"></path>
+                        </svg>
+                    </i>
+                    <span class="item-name">Ta’lim faoliyati</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {% if request.resolver_match.url_name == 'student_research' %}active{% endif %}"
+                   href="{% url 'student_research' %}">
+                    <i class="icon">
+                        <svg class="icon-32" width="32" viewBox="0 0 24 24" fill="none"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                  d="M22 12C22 17.52 17.51 22 12 22L11.7202 21.9962C6.32942 21.8478 2 17.4264 2 12C2 6.49 6.48 2 12 2C17.51 2 22 6.49 22 12ZM10.02 8C9.73 8.3 9.73 8.77 10.03 9.06L12.98 12L10.03 14.94C9.73 15.23 9.73 15.71 10.02 16C10.32 16.3 10.79 16.3 11.08 16L14.57 12.53C14.71 12.39 14.79 12.2 14.79 12C14.79 11.8 14.71 11.61 14.57 11.47L11.08 8C10.94 7.85 10.75 7.78 10.56 7.78C10.36 7.78 10.17 7.85 10.02 8Z"
+                                  fill="currentColor"></path>
+                        </svg>
+                    </i>
+                    <span class="item-name">Ilmiy-innovatsion <br> faoliyat</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {% if request.resolver_match.url_name == 'student_social' %}active{% endif %}"
+                   href="{% url 'student_social' %}">
+                    <i class="icon">
+                        <svg class="icon-32" width="32" viewBox="0 0 24 24" fill="none"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                  d="M22 12C22 17.52 17.51 22 12 22L11.7202 21.9962C6.32942 21.8478 2 17.4264 2 12C2 6.49 6.48 2 12 2C17.51 2 22 6.49 22 12ZM10.02 8C9.73 8.3 9.73 8.77 10.03 9.06L12.98 12L10.03 14.94C9.73 15.23 9.73 15.71 10.02 16C10.32 16.3 10.79 16.3 11.08 16L14.57 12.53C14.71 12.39 14.79 12.2 14.79 12C14.79 11.8 14.71 11.61 14.57 11.47L11.08 8C10.94 7.85 10.75 7.78 10.56 7.78C10.36 7.78 10.17 7.85 10.02 8Z"
+                                  fill="currentColor"></path>
+                        </svg>
+                    </i>
+                    <span class="item-name">Ijtimoiy, ma’naviy-<br>Ma’rifiy faollik</span>
+                </a>
+            </li>
+
+            <li>
+                <hr class="hr-horizontal">
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link {% if request.resolver_match.url_name == 'help_student' %}active{% endif %}"
+                   href="{% url 'help_student' %}">
+                    <i class="icon">
+                        <svg class="icon-32" width="32" viewBox="0 0 24 24" fill="none"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                  d="M22 12C22 17.52 17.51 22 12 22L11.7202 21.9962C6.32942 21.8478 2 17.4264 2 12C2 6.49 6.48 2 12 2C17.51 2 22 6.49 22 12ZM10.02 8C9.73 8.3 9.73 8.77 10.03 9.06L12.98 12L10.03 14.94C9.73 15.23 9.73 15.71 10.02 16C10.32 16.3 10.79 16.3 11.08 16L14.57 12.53C14.71 12.39 14.79 12.2 14.79 12C14.79 11.8 14.71 11.61 14.57 11.47L11.08 8C10.94 7.85 10.75 7.78 10.56 7.78C10.36 7.78 10.17 7.85 10.02 8Z"
+                                  fill="currentColor"></path>
+                        </svg>
+                    </i>
+                    <span class="item-name"> Yo'riqnoma </span>
+                </a>
+            </li>
+
+        {% endif %}
+
+    </ul>
+    <!-- Sidebar Menu End -->
+</div>
+
+<style>
+    .item-name {
+        text-transform: none;
+    }
+</style>

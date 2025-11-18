@@ -1,0 +1,87 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}{{ section_title }}{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <div class="d-flex align-items-center mb-4">
+        <i class="bi bi-clipboard-check fs-3 text-primary me-3"></i>
+        <h4 class="mb-0 text-primary">{{ section_title }}</h4>
+    </div>
+
+    {% if mezon_data %}
+        <div class="row g-4">
+            {% for m in mezon_data %}
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm border-0 rounded-3 hover-shadow">
+                    <div class="card-body d-flex flex-column">
+                        <!-- Mezon nomi va ikonka -->
+                        <div class="d-flex align-items-start mb-2">
+                            <div class="bg-light-primary rounded p-2 me-3">
+                                {% if section == 'taught' %}
+                                    <i class="bi bi-mortarboard text-primary fs-5"></i>
+                                {% elif section == 'research' %}
+                                    <i class="bi bi-file-earmark-text text-primary fs-5"></i>
+                                {% else %}
+                                    <i class="bi bi-people text-primary fs-5"></i>
+                                {% endif %}
+                            </div>
+                            <h6 class="fw-bold mb-0">{{ m.name }}</h6>
+                        </div>
+
+                        <!-- Maksimal ball -->
+                        <small class="text-muted mb-2">
+                            Maksimal: <strong>{{ m.max_ball }}</strong> ball
+                        </small>
+
+                        <!-- Hujjat talab qilinadimi? -->
+                        <div class="mt-auto pt-2 border-top">
+                            {% if m.needs_document %}
+                                <a href="{% url 'student_add_activity' section m.code %}" class="btn btn-sm btn-outline-primary w-100">
+                                    <i class="bi bi-cloud-arrow-up me-1"></i> Hujjat yuklash
+                                </a>
+                            {% else %}
+                                <div class="text-center">
+                                    <span class="badge bg-light-secondary text-dark">
+                                        <i class="bi bi-x-circle me-1"></i> Hujjat talab qilinmaydi
+                                    </span>
+                                </div>
+                            {% endif %}
+
+                            <!-- Yuklangan ishlar soni -->
+                            {% if m.count > 0 %}
+                                <div class="mt-2 text-center">
+                                    <small class="text-muted">
+                                        <i class="bi bi-file-earmark me-1"></i> Yuklangan: <strong>{{ m.count }}</strong> ta
+                                    </small>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="text-center py-5">
+            <i class="bi bi-clipboard-x fs-1 text-secondary mb-3"></i>
+            <h5 class="text-muted">Ushbu bo'limda mezonlar mavjud emas</h5>
+        </div>
+    {% endif %}
+</div>
+
+<style>
+.hover-shadow:hover {
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,.15)!important;
+    transform: translateY(-2px);
+    transition: all 0.2s ease;
+}
+.bg-light-primary {
+    background-color: rgba(13, 110, 253, 0.1);
+}
+.bg-light-secondary {
+    background-color: rgba(108, 117, 125, 0.15);
+}
+</style>
+{% endblock %}

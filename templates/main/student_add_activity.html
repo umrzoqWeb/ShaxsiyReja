@@ -1,0 +1,41 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}Yangi hujjat yuklash — {{ mezon_name }}{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h4 class="text-primary">
+            <i class="bi bi-cloud-arrow-up me-2"></i>Yangi hujjat yuklash: {{ mezon_name }}
+        </h4>
+        <a href="{% url 'student_mezon_detail' section activity_type %}" class="btn btn-outline-secondary btn-sm">
+            <i class="bi bi-arrow-left me-1"></i>Orqaga
+        </a>
+    </div>
+
+    <div class="card shadow-sm border-0">
+        <div class="card-body">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label class="form-label">Hujjat nomi</label>
+                    {{ form.title }}
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Izoh</label>
+                    {{ form.description }}
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Faylni yuklang</label>
+                    {{ form.evidence_file }}
+                    <div class="form-text">PDF, DOC, JPG yoki PNG formatidagi hujjat</div>
+                </div>
+                <button type="submit" class="btn btn-success">
+                    <i class="bi bi-upload me-1"></i>Yuklash
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

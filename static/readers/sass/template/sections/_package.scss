@@ -1,0 +1,212 @@
+.package-style1{
+   background-color: $white-color;
+   border-radius: 6px;
+   box-shadow: 1.5px 2.598px 14.88px 1.12px rgba(116, 117, 117, 0.1);
+   min-block-size: 100%;
+   overflow: hidden;
+   &.premium{
+      .package-name2{
+         background-color: $title-color;
+         color: $white-color;
+         margin-bottom: 0;
+      }
+      .package-footer{
+         background-color: $title-color;
+         color: $white-color;
+         &:hover{
+            color: $title-color;
+            background-color: $secondary-color;
+         }
+      }
+   }
+   [data-tab-content] {
+      display: none;
+    }
+    
+    .active[data-tab-content] {
+      display: block;
+    }
+}
+.package-filter{
+   padding: 5px;
+   border-radius: 50px;
+   background-color: $secondary-color;
+   justify-content: space-between;
+   display: inline-block;
+   a{
+      color: $title-color;
+   }
+   .style3{
+      display: inline-block;
+      background-color: transparent;
+      border-color: transparent;
+      padding: 15px 22px;
+      &.active{
+         background-color: $title-color;
+         color: $white-color;
+      }
+   }
+}
+.package-head{
+   background-color: $title-color;
+   padding: 30px 35px;
+   text-align: center;
+   .package-name{
+      color: $white-color;
+      text-transform: uppercase;
+      font-size: 30px;
+      font-weight: 600;
+   }
+}
+.package-head2{
+   padding: 0;
+   background-color: $title-color;
+   .package-name2{
+      color: $title-color;
+      text-transform: uppercase;
+      font-size: 30px;
+      font-weight: 600;
+      background-color: $secondary-color;
+      text-align: center;
+      padding: 10px;
+      margin-bottom: 0;
+   }
+}
+.package-body{
+   background-color: $white-color;
+   padding: 30px;
+   border-radius: 0px 0px 10px 10px;
+}
+.package-body2{
+   background-color: $white-color;
+   padding: 18px 30px 0 30px;
+   border-radius: 0px 0px 10px 10px;
+   text-align: center;
+}
+.package-list{
+   .list-unstyled{
+      li{
+         background-color: #F1F1F1;
+         border-radius: 37px;
+         padding: 22px 25px;
+         margin-bottom: 15px;
+         font-size: 16px;
+         font-weight: 600;
+         font-family: $body-font;
+         text-transform: uppercase;
+         color: $title-color;
+         i{
+            margin-right: 20px;
+            width: 28px;
+            height: 28px;
+            line-height: 28px;
+            text-align: center;
+            background-color: $secondary-color;
+            color: $title-color;
+            border-radius: 100%;
+            margin-bottom: 0;
+         }
+      }
+   }
+}
+.package-list2{
+   .list-title{
+      text-align: center;
+      text-transform: uppercase;
+      color: $title-color;
+      font-weight: 700;
+      font-size: 15px;
+      margin-bottom: 10px;
+   }
+   .list-unstyled{
+      text-align: center;
+      max-width: 150px;
+      margin: 0 auto;
+      li{
+         border-radius: 50px;
+         padding:24px 30px;
+         margin-bottom: 15px;
+         font-size: 16px;
+         font-weight: 600;
+         font-family: $body-font;
+         text-transform: uppercase;
+         color: $title-color;
+         i{
+            text-align: center;
+            color: $title-color;
+            border-radius: 100%;
+            margin-bottom: 0;
+         }
+         &.item-bg{
+            background-color: #F1F1F1;
+         }
+      }
+   }
+  
+}
+.package-price{
+   color: #94A3A3;
+   text-transform: uppercase;
+   font-family: $body-font;
+   text-align: center;
+   margin-bottom: 0;
+   font-size: 14px;
+   font-weight: 500;
+   padding: 18px 10px 18px 10px;
+   span{
+      color: $white-color;
+      font-size: 26px;
+      font-family: $body-font;
+      font-weight: 600;
+      margin-right: 5px;
+   }
+}
+.package-footer{
+   color: $title-color;
+   text-transform: uppercase;
+   font-size: 15px;
+   font-weight: 700;
+   background-color: $secondary-color;
+   // border-radius:0px 0px 10px 10px;
+   text-align: center;
+   padding: 30px 10px;
+   margin-bottom: 0;
+   display: block;
+   transition: all 0.3s ease;
+   font-family: $body-font;
+   &:hover{
+      background-color: $theme-color;
+      color: $white-color;
+   }
+}
+
+@include md{
+   .package-name{
+      font-size: 26px !important;
+   }
+}
+@include sm{
+   .package-head{
+      padding: 30px 15px;
+   }
+   .package-filter .style3{
+      font-size: 12px;
+      padding: 15px 18px;
+   }
+   .package-list .list-unstyled li{
+      padding: 20px 15px;
+      font-size: 14px;
+      i{
+         margin-right: 10px;
+      }
+   }
+  
+}
+@media (max-width:375px){
+   .package-list .list-unstyled li{
+      font-size: 12px;
+      i{
+         margin-right: 10px;
+      }
+   }
+}

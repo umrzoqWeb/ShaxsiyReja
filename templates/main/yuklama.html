@@ -1,0 +1,71 @@
+{% extends 'main/base.html' %}
+
+{% block title %}Yuklama{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Sizning o'quv yuklamingiz</h4>
+            </div>
+            <div class="card-body">
+                {% if yuklama %}
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Fan</th>
+                                <th>Ta'lim turi</th>
+                                <th>Akademik yuklama</th>
+                                <th>O'quv reja</th>
+                                <th>Semestr</th>
+                                <th>Guruh</th>
+                                <th>Talabalar soni</th>
+                                <th>Faol</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in yuklama %}
+                            <tr>
+                                <td>{{ item.subject.name }} ({{ item.subject.code }})</td>
+                                <td>
+                                    {% if item.curriculum_subject_detail %}
+                                        {{ item.curriculum_subject_detail.training_type.name }}
+                                    {% else %}
+                                        —
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if item.curriculum_subject_detail %}
+                                        {{ item.curriculum_subject_detail.academic_load }}
+                                    {% else %}
+                                        —
+                                    {% endif %}
+                                </td>
+                                <td>{{ item.curriculum.name }}</td>
+                                <td>{{ item.semester.name }}</td>
+                                <td>{{ item.group.name }}</td>
+                                <td>{{ item.students_count }}</td>
+                                <td>
+                                    {% if item.active %}
+                                        <span class="badge bg-success">Faol</span>
+                                    {% else %}
+                                        <span class="badge bg-secondary">Nofaol</span>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% else %}
+                <div class="text-center py-4">
+                    <p class="text-muted">Sizga hali hech qanday fan biriktirilmagan.</p>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

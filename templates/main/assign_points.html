@@ -1,0 +1,47 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}Ball qo'yish — {{ activity.get_activity_type_display }}{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h4 class="text-primary">
+            <i class="bi bi-plus-circle me-2"></i>Ball qo'yish: {{ activity.get_activity_type_display }}
+        </h4>
+        <a href="{% url 'student_reviewer_dashboard' %}" class="btn btn-outline-secondary btn-sm">
+            <i class="bi bi-arrow-left me-1"></i>Orqaga
+        </a>
+    </div>
+
+    <div class="card shadow-sm border-0 mb-4">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <p><strong>Talaba:</strong> {{ activity.student.full_name }}</p>
+                    <p><strong>Guruh:</strong> {{ activity.student.group.name|default:"—" }}</p>
+                    <p><strong>Mutaxassiflik:</strong> {{ activity.student.specialty.name|default:"—" }}</p>
+                </div>
+                <div class="col-md-6">
+                    <p><strong>Mezon:</strong> {{ activity.get_activity_type_display }}</p>
+                    <p><strong>Bo'lim:</strong> {{ activity.get_section_display }}</p>
+                    <p><strong>Maksimal ball:</strong> {{ max_ball }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <form method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="points" class="form-label">Ball (maksimal: {{ max_ball }})</label>
+            <input type="number" name="points" id="points" class="form-control" min="0" max="{{ max_ball }}" step="0.5" required>
+        </div>
+        <div class="mb-3">
+            <label for="comment" class="form-label">Izoh (ixtiyoriy)</label>
+            <textarea name="comment" id="comment" class="form-control" rows="3"></textarea>
+        </div>
+        <button type="submit" class="btn btn-success">Ball qo'yish</button>
+    </form>
+</div>
+{% endblock %}

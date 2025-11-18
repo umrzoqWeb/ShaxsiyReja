@@ -1,0 +1,110 @@
+.reviews-inner{
+   position: relative;
+   max-width: 666px;
+   margin: 0 auto;
+   overflow: hidden;
+   z-index: 1;
+   .review-style1{
+      text-align: center;
+      .review-rating{
+         text-align: center;
+         margin-bottom: 30px;
+         i{
+            color: $secondary-color;
+         }
+      }
+      .review-text{
+         font-size: 16px;
+         font-weight: 500;
+         color: #E1DADA;
+         margin-bottom: 65px;
+      }
+      .review-author{
+         color: $white-color;
+         margin-bottom: 26px;
+         font-weight: 600;
+         text-transform: uppercase;
+         font-family: $body-font;
+      }
+      .review-avater{
+         margin-bottom: 50px;
+         img{
+            border-radius: 100%;
+         }
+      }
+   }
+}
+.reviews-wrap1{
+   position: relative;
+   overflow: hidden;
+   .reviews-shape1 {
+   position: absolute;
+   border-radius: 0;
+   height: -webkit-fill-available;
+   left: 0;
+   max-height: fit-content;
+   top: 0;
+   z-index: 0;
+   width: 52%;
+   &::after{
+      content: "";
+      position: absolute;
+      right: 0;
+      width: 15px;
+      height: 290px;
+      background-color: $secondary-color;
+      top: 50%;
+      transform: translateY(-50%);
+   }
+   }
+   .vs-carousel{
+  z-index: -1;
+  .item1{
+     img{
+      object-fit: cover;
+      aspect-ratio: 1.2;
+      width: 100%;
+      max-height: 780px;
+     }
+  }
+   }
+   .slick-dots{
+      margin-bottom: 5px;
+   }
+}
+
+@include xl{
+   .reviews-wrap1 .vs-carousel .item1 img {
+      object-fit: cover;
+      aspect-ratio: 1;
+  }
+}
+@include lg{
+   .reviews-shape1{
+      display: none;
+   }
+   .reviews-inner{
+      background-color: $dark-color;
+      max-width: 100%;
+      padding-top: 80px;
+   }
+   .review-text{
+      padding-left: 10px;
+      padding-right: 10px;
+   }
+}
+@include md{
+   .reviews-shape1{
+      display: none;
+   }
+   .reviews-inner{
+      padding-top: 80px;
+      background-color: $dark-color;
+      max-width: 100%;
+   }
+   .review-text{
+      padding-left: 10px;
+      padding-right: 10px;
+   }
+}
+

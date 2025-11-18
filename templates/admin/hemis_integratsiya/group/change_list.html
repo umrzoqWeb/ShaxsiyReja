@@ -1,0 +1,9 @@
+{% extends "admin/change_list.html" %}
+{% block object-tools-items %}
+  <li>
+    <a href="{% url sync_url %}" class="btn btn-default" style="background:#4CAF50;color:white;padding:8px 12px;border-radius:4px;text-decoration:none;display:inline-block;">
+      🔄 Guruhlarni sinxron qilish
+    </a>
+  </li>
+  {{ block.super }}
+{% endblock %}

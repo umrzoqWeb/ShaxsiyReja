@@ -1,0 +1,27 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}{{ section_title }}{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+
+
+        <div class="text-center py-5 alert alert-danger">
+            <i class="bi bi-clipboard-x fs-1 text-secondary mb-3"></i>
+            <h5 class="text-muted">Xatolik yuz berdi! </h5>
+        </div>
+
+</div>
+
+<style>
+.hover-shadow:hover {
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,.15)!important;
+    transform: translateY(-2px);
+    transition: all 0.2s ease;
+}
+.card1{
+    background-color: #f2f2f2;
+}
+</style>
+{% endblock %}

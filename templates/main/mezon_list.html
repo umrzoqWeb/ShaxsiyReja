@@ -1,0 +1,72 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}{{ section_title }}{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h4 class="text-primary">
+            <i class="bi bi-list-check me-2"></i>{{ section_title }}
+        </h4>
+        <!-- Umumiy tugma kerak emas, chunki har bir mezon alohida "Yangi yuklash"ga ega -->
+    </div>
+
+    {% if mezon_data %}
+        <div class="row g-4">
+            {% for m in mezon_data %}
+            <div class="col-md-4">
+                <a href="{% url 'mezon_detail' m.code %}" class="text-decoration-none">
+                    <div class="card card1 h-100 shadow-sm border-1 hover-shadow">
+                        <div class="card-body d-flex flex-column">
+                            <div class="d-flex align-items-start mb-2">
+                                <div class="bg-light rounded p-2 me-3">
+                                    <i class="bi bi-trophy text-warning fs-5"></i>
+                                </div>
+                                <h6 class="fw-bold mb-1">{{ m.name }}</h6>
+                            </div>
+                            <small class="text-muted">Maksimal: <strong>{{ m.max_ball }}</strong> ball</small>
+
+                            <div class="mt-auto pt-2 border-top mt-3">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <small class="text-muted">
+                                        Yuklangan: <strong>{{ m.count }}</strong> ta
+                                    </small>
+                                    {% if m.latest %}
+                                        {% if m.latest.status == 'approved' %}
+                                            <span class="badge bg-success"><i class="bi bi-check-circle me-1"></i>Tasdiqlangan</span>
+                                        {% elif m.latest.status == 'rejected' %}
+                                            <span class="badge bg-danger"><i class="bi bi-x-circle me-1"></i>Rad etilgan</span>
+                                        {% else %}
+                                            <span class="badge bg-warning text-dark"><i class="bi bi-clock me-1"></i>Jarayonda</span>
+                                        {% endif %}
+                                    {% else %}
+                                        <span class="badge bg-secondary">Hech narsa yo‘q</span>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="text-center py-5">
+            <i class="bi bi-clipboard-x fs-1 text-secondary mb-3"></i>
+            <h5 class="text-muted">Hech qanday mezon topilmadi</h5>
+        </div>
+    {% endif %}
+</div>
+
+<style>
+.hover-shadow:hover {
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,.15)!important;
+    transform: translateY(-2px);
+    transition: all 0.2s ease;
+}
+.card1{
+    background-color: #f2f2f2;
+}
+</style>
+{% endblock %}

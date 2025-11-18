@@ -1,0 +1,34 @@
+<!-- templates/main/rating_form.html -->
+{% extends 'main/base.html' %}
+
+{% block title %}Baholash reytingi — {{ category_label }}{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <h3 class="mb-4">Baholash mezonlari — {{ category_label }}</h3>
+
+    {% if mezon_list %}
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="row g-3">
+            {% for code, label, max_points in mezon_list %}
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h6>{{ label }} <span class="text-muted">({{ max_points }} ballgacha)</span></h6>
+                        <textarea name="desc_{{ code }}" class="form-control mb-2" placeholder="Tafsilotlarni kiriting..."></textarea>
+                        <input type="file" name="file_{{ code }}" class="form-control">
+                        <input type="number" name="points_{{ code }}" min="0" max="{{ max_points }}" step="0.5"
+                               class="form-control mt-2" placeholder="Berilgan ball">
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <button type="submit" class="btn btn-primary mt-3">Ma'lumotlarni saqlash</button>
+    </form>
+    {% else %}
+    <div class="alert alert-warning">Sizning lavozimingiz bo'yicha baholash mezonlari topilmadi.</div>
+    {% endif %}
+</div>
+{% endblock %}

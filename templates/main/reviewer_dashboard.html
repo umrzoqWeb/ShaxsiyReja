@@ -1,0 +1,22 @@
+{% extends 'main/base.html' %}
+{% block content %}
+<div class="container py-4">
+    <h3>Tekshirish uchun ishlar</h3>
+    {% for item in my_activities %}
+    <div class="card mb-3">
+        <div class="card-body">
+            <h5>{{ item.activity.title }}</h5>
+            <p><strong>Xodim:</strong> {{ item.activity.employee.full_name }}</p>
+            <p><strong>Mezon:</strong> {{ item.activity.get_activity_type_display }}</p>
+            {% if item.already_reviewed %}
+                <span class="badge bg-secondary">Siz sharh berdingiz</span>
+            {% else %}
+                <a href="{% url 'review_activity' item.activity.id %}" class="btn btn-primary">Tekshirish</a>
+            {% endif %}
+        </div>
+    </div>
+    {% empty %}
+    <p>Hech qanday ish topilmadi.</p>
+    {% endfor %}
+</div>
+{% endblock %}
