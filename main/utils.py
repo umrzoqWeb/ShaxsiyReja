@@ -99,19 +99,19 @@ def get_reviewers_for_activity(activity):
 
 STUDENT_MEZON_CATEGORIES = {
     'taught': [
-        ('attendance', 'Dars mashg‘ulotlariga davomati', 30, False),
-        ('grades', 'Fanlarni o‘zlashtirishi (a‘lo baholarda)', 30, False),
+        ('attendance', 'Dars mashg`ulotlariga davomati', 30, False),
+        ('grades', 'Fanlarni o‘zlashtirishi', 30, False),
         ('student_mobility', 'Akademik mobiligi', 20, True),
-        ('circle_participation', 'To‘garaklarda ishtirok etishi', 20, False),
+        ('circle_participation', 'To`garaklarda ishtrok etishi (fan koordinatori rahbarligida)', 20, False),
     ],
     'research': [
-        ('student_oak', 'OAK jurnalida maqola', 30, True),
-        ('olympiad_award', 'Fan olimpiadasida sovrin', 40, True),
-        ('language_cert', 'Chet tili sertifikati', 30, True),
+        ('student_oak', '(OAK) tasarrufidagi indeksatsiya qilingan nashrlarda maqola chop etish, shu jumladan hammualiflikda', 30, True),
+        ('olympiad_award', 'Respublika fan olimpiadasida sovrin, o`rin olishi va ilmiy amaliy anjumanlarda ma`ruza bilan ishtrok etib sovrinli o`rin egallashi', 40, True),
+        ('language_cert', 'Til bilish darajasi mavjudligi: IELTS, CEFR, TOEFL, TOPIK,  Türkçe Yeterlilik Belgesi (TÖMER, Yunus Emre Enstitüsü)', 30, True),
     ],
     'social': [
-        ('moral_events', 'Ma‘naviy-ma‘rifiy tadbirlarda ishtirok', 30, False),
-        ('initiative_award', '“5 tashabbus”, tanlovda ishtirok', 30, True),
-        ('social_media', 'Ijtimoiy tarmoqlardagi faollik', 40, True),
+        ('moral_events', 'Ma`naviy-ma`rifiy tadbirlarda faol ishtrok etish / Shaxsiy intizom', 30, False),
+        ('initiative_award', '“5 tashabbus”, Kitobxonlik, Zakovat, sport, san’at, teatr IT va boshqa tanlovlarda  ishtrok etib sovrinli o`rin egallashi (I / II / III o`rin) ', 30, True),
+        ('social_media', 'Ijtimoiy tarmoqlardagi faolligi (reels, post, stories)', 40, True),
     ]
 }
